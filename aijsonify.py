@@ -7,7 +7,6 @@ aijsonify.py
 from argparse import ArgumentParser
 from json import dumps
 from sys import stdin
-from sys import stdout
 
 from requests import post
 
