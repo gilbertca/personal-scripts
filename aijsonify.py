@@ -29,17 +29,19 @@ def aijsonify(model: str, url: str, message: str, stream: bool=False) -> None:
     # Format and send request:
     request_data = {
         "model": model,
-        "messages": {
-            "role": "user",
-            "content": message,
-            "images": b64image_list,
-        },
-        "stream": stream,
+        "messages": [
+            {
+                "role": "user",
+                "content": message,
+                "images": b64image_list
+            }
+        ],
+        "stream": stream
     }
-    response = post(url=url, data=dumps(request_data))
+    response = post(url=url, json=request_data)
 
     # Handle output:
-    print(response)
+    print(response.json())
 
 if __name__=="__main__":
     parser = ArgumentParser(description=__doc__)
