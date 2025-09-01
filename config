@@ -25,7 +25,7 @@ include /etc/sway/config-vars.d/*
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * resolution 1920x1080@47.999Hz position 0,0
+output * resolution 1920x1080@47.999Hz position 0,0 background #110011 solid_color
 #
 # Example configuration:
 #
@@ -52,6 +52,8 @@ output * resolution 1920x1080@47.999Hz position 0,0
 #
 input "YOUR INPUT" {
 	pointer_accel 0.28
+	dwt disabled
+	tap enabled
 }
 #   input "2:14:SynPS/2_Synaptics_TouchPad" {
 #       dwt enabled
@@ -227,6 +229,13 @@ bindsym $mod+F11 exec brightnessctl set 8-
 bindsym $mod+F12 exec brightnessctl set +8
 
 default_border pixel 1
-client.focused #FF00FF #FF00FF #000000
+client.focused #FF00FF #FF00FF #000000 #FF00FF
 
 include /etc/sway/config.d/*
+
+# Broken Escape key :(
+bindsym $mod+F1 exec wtype -k Escape
+
+# Print, and AI print
+bindsym Print exec $GRIM_DEFAULT_DIR/screenshot.sh
+bindsym $mod+Print exec $GRIM_DEFAULT_DIR/ai.sh
