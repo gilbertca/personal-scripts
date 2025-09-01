@@ -40,7 +40,8 @@ def aijsonify(model: str, url: str, message: str, stream: bool=False) -> None:
     response = post(url=url, json=request_data)
 
     # Handle output:
-    print(response.json())
+    output = json.dumps(response.json(), indent=4)
+    print(output)
 
 if __name__=="__main__":
     parser = ArgumentParser(description=__doc__)

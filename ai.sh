@@ -9,7 +9,7 @@ vared -p "URL to query> " -c url
 # User message:
 vared -p "User message to LLM> " -c message
 # Sleep time:
-vared -p "Time to sleep before screenshot (0 for instant)> " -c sleep_time
+vared -p "Seconds to sleep before screenshot (0 for instant)> " -c sleep_time
 sleep $sleep_time
 
 # `slurp` grabs the screen area, writes to stdout
