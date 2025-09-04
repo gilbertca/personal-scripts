@@ -116,3 +116,7 @@ fi
 #    rsync -azv --progress /home/fubar/agent-dir scram@scram:/home/scram
 #}
 
+function tails {
+	hostname=""
+	ssh $hostname@$(sudo tailscale status|awk /$hostname/' { print $1 }')
+}
