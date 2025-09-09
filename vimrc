@@ -99,6 +99,15 @@ nnoremap <localleader>f za
 "To prevent auto-indent while pasting:
 set pastetoggle=<F1>
 
-"Vex and Sex mapped to F5
+"Splits/Explore:
 nnoremap <localleader>O :Vex<cr>
 nnoremap <localleader>o :Sex<cr>
+nnoremap <localleader>e :Ex<cr>
+
+"Tabs:
+nnoremap <localleader>t :tabnew<CR>:Ex<cr>
+nnoremap <C-l> :tabn<CR>
+nnoremap <C-h> :tabp<CR>
+
+"Hide highlight:
+nnoremap <localleader>/ :noh<CR>

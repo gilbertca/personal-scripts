@@ -116,7 +116,24 @@ fi
 #    rsync -azv --progress /home/fubar/agent-dir scram@scram:/home/scram
 #}
 
+# Auto connect to the provided hostname over tailscale
+# (assumes tailscale name, and machine name are the same)
 function tails {
-	hostname=""
+	hostname=$1
 	ssh $hostname@$(sudo tailscale status|awk /$hostname/' { print $1 }')
+}
+
+# When changing directories, list the contents:
+function c {
+	cd $1
+	ll
+}
+function ca {
+	cd $1
+	la
+}
+
+# Activate python venvs from the top-level dir:
+function sauce {
+	source $1/bin/activate
 }
