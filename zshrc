@@ -135,5 +135,11 @@ function ca {
 
 # Activate python venvs from the top-level dir:
 function sauce {
-	source $1/bin/activate
+ source $1/bin/activate
 }
+
+# Run in background and close terminal
+function rib {
+	nohup $1>/dev/null 2>&1 &! sleep 1 && exit;
+}
+

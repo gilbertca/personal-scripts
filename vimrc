@@ -16,7 +16,7 @@ let maplocalleader=" "
 
 "STATUS LINE:{{{
 set laststatus=2 ":h laststatus
-set statusline=%f\ -\ %l/%L
+set statusline=%f\ -\ %l/%L\ \(%c\)
 "}}}
 
 "OPTIONS:{{{
@@ -38,6 +38,7 @@ augroup python_group{{{
 \set backspace=indent,eol,start|
 \set hlsearch|
 \set incsearch|
+\set colorcolumn=80|
 augroup END
 "}}}
 augroup rust_group{{{
@@ -60,7 +61,6 @@ augroup END
 "INSERT MODE MAPPINGS:{{{
 inoremap jk <esc>l
 inoremap JK <esc>l
-inoremap {}} {<cr>a<cr>}<esc>kA<bs>
 "INSERT MODE ABBREVIATIONS:
 "EX iabbrev {abbrev} Fulltext
 "}}}
@@ -111,3 +111,8 @@ nnoremap <C-h> :tabp<CR>
 
 "Hide highlight:
 nnoremap <localleader>/ :noh<CR>
+"Brace handling:
+""Blocks:
+inoremap {}} {<cr>a<cr>}<esc>kA<bs>
+""Move cursor inside braces after typing
+inoremap {}h {}<esc>ci{
