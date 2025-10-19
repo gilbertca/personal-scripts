@@ -2,7 +2,7 @@
 " Created 2022-12-17
 " Updated 2025-08-24 and uploaded to github.com @gilbertca
 "Left here, and a bit later --> https://learnvimscriptthehardway.stevelosh.com/chapters/31.html
-source $VIMRUNTIME/defaults.vim
+"source $VIMRUNTIME/defaults.vim
 "NOTES:{{{
 " imode: c-u delete to start of line
 " nmode: s-k runs `! man {word}` for {word} under cursor
@@ -81,19 +81,28 @@ nnoremap <c-j> 6j
 " Window Switching{{{
 " Window above:
 nnoremap <localleader>k <c-w>k
+nnoremap <localleader>K <c-w>K
 " Window below:
 nnoremap <localleader>j <c-w>j
+nnoremap <localleader>J <c-w>J
 " Window left:
 nnoremap <localleader>h <c-w>h
+nnoremap <localleader>H <c-w>H
 " Window right:
 nnoremap <localleader>l <c-w>l
+nnoremap <localleader>L <c-w>L
 "}}}
 " Fold shortcut{{{
 nnoremap <localleader>f za  
 "}}}}}}
 
 "VISUAL MODE MAPPINGS:{{{
-" Adjust movement
+" (yy) Yank-Yank copies to Clipboard:
+vnoremap yy "+y
+" ( Y) Copy exact selection
+vnoremap <localleader>Y "+y
+" ( y) Move to end of line, yank to clipboard with no trailing newline
+vnoremap <localleader>y $h"+y
 "}}}}}}
 
 "To prevent auto-indent while pasting:
