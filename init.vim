@@ -99,8 +99,6 @@ nnoremap <localleader>f za
 "VISUAL MODE MAPPINGS:{{{
 " (yy) Yank-Yank copies to Clipboard:
 vnoremap yy "+y
-" ( Y) Copy exact selection
-vnoremap <localleader>Y "+y
 " ( y) Move to end of line, yank to clipboard with no trailing newline
 vnoremap <localleader>y $h"+y
 "}}}}}}

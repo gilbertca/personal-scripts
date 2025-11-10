@@ -104,7 +104,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Environment variables:
-export EDITOR=vim
+export EDITOR=nvim
 export GRIM_DEFAULT_DIR=$HOME/screenshots
 
 # Launch sway:
@@ -116,30 +116,51 @@ fi
 #    rsync -azv --progress /home/fubar/agent-dir scram@scram:/home/scram
 #}
 
+
+
+# When changing directories, list the contents:
+
+
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/scram/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/scram/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/scram/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/scram/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# Custom functions
+# redacted
+function cop { # copy file contents
+	cat $1|wl-copy -n
+}
+function c { # change into directory, list visible contents
+	cd $1
+	ll
+}
+function ca { # change into directory, list all contents
+	cd $1
+	la
+}
+function rib { # run in background and close terminal after 5 sec
+	nohup $1>/dev/null 2>&1 &! sleep 5 && exit;
+}
+function ss { # screenshot
+	grimshot save area $HOME/screenshots/$1.png
+}
 # Auto connect to the provided hostname over tailscale
 # (assumes tailscale name, and machine name are the same)
 function tails {
 	hostname=$1
 	ssh $hostname@$(sudo tailscale status|awk /$hostname/' { print $1 }')
 }
-
-# When changing directories, list the contents:
-function c {
-	cd $1
-	ll
-}
-function ca {
-	cd $1
-	la
-}
-
-# Activate python venvs from the top-level dir:
-function sauce {
- source $1/bin/activate
-}
-
-# Run in background and close terminal
-function rib {
-	nohup $1>/dev/null 2>&1 &! sleep 1 && exit;
-}
+# redacted
+# Conversion to Neovim:
+alias vim="nvim"
 

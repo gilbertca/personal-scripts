@@ -25,7 +25,7 @@ include /etc/sway/config-vars.d/*
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * resolution 1920x1080@47.999Hz position 0,0 background #101010 solid_color
+output * resolution 1920x1080 position 0 0 background #101010 solid_color
 #
 # Example configuration:
 #
@@ -51,9 +51,10 @@ output * resolution 1920x1080@47.999Hz position 0,0 background #101010 solid_col
 # Example configuration:
 #
 input "" {
-	pointer_accel 0.28
+	pointer_accel 0.34
 	dwt disabled
 	tap enabled
+	drag disabled
 }
 #   input "2:14:SynPS/2_Synaptics_TouchPad" {
 #       dwt enabled
@@ -98,22 +99,12 @@ input "" {
     bindsym $mod+$down focus down
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
-    # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
 
     # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
     bindsym $mod+Shift+$down move down
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
-    # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
 #
 # Workspaces:
 #
@@ -209,10 +200,9 @@ bindsym $mod+r mode "resize"
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position top
-
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
+    status_command while $HOME/scripts/status_bar.sh; do sleep 1; done
 
     colors {
         statusline #ffffff
@@ -225,8 +215,8 @@ bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
 bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
-bindsym $mod+F11 exec brightnessctl set 8-
-bindsym $mod+F12 exec brightnessctl set +8
+bindsym $mod+F11 exec brightnessctl set 4%-
+bindsym $mod+F12 exec brightnessctl set +4%
 
 default_border pixel 1
 client.focused #FF00FF #FF00FF #000000 #FF00FF
@@ -236,3 +226,4 @@ include /etc/sway/config.d/*
 # Print, and AI print
 bindsym Print exec $GRIM_DEFAULT_DIR/screenshot.sh
 bindsym $mod+Print exec $GRIM_DEFAULT_DIR/ai.sh
+
