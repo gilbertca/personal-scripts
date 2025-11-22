@@ -51,7 +51,7 @@ output * resolution 1920x1080 position 0 0 background #101010 solid_color
 # Example configuration:
 #
 input "" {
-	pointer_accel 0.34
+	pointer_accel 0.48
 	dwt disabled
 	tap enabled
 	drag disabled
@@ -202,7 +202,7 @@ bar {
     position top
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while $HOME/scripts/status_bar.sh; do sleep 1; done
+    status_command while $SCDIR/status_bar.sh; do sleep 1; done
 
     colors {
         statusline #ffffff

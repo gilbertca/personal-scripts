@@ -102,24 +102,18 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias vim="nvim"
 
 # Environment variables:
 export EDITOR=nvim
 export GRIM_DEFAULT_DIR=$HOME/screenshots
+export SSDIR=$GRIM_DEFAULT_DIR
+export SCDIR=$HOME/scripts
 
 # Launch sway:
 if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
     exec sway
 fi
-
-#function agents {
-#    rsync -azv --progress /home/fubar/agent-dir scram@scram:/home/scram
-#}
-
-
-
-# When changing directories, list the contents:
-
 
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/scram/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -162,5 +156,3 @@ function tails {
 }
 # redacted
 # Conversion to Neovim:
-alias vim="nvim"
-
