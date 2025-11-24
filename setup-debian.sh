@@ -9,7 +9,7 @@ sudo chown root /etc/apt/sources.list
 sudo apt-get update -y;
 sudo apt-get upgrade -y;
 sudo apt-get full-upgrade -y;
-sudo apt-get install brightnessctl ncdu thunar javacc xwayland pipewire-audio flatpak build-essential curl fuzzel git lynx zsh neovim sway swaylock tree htop fonts-ibm-plex wayvnc wtype wl-clipboard grimshot zip -y;
+sudo apt-get install brightnessctl ncdu thunar javacc xwayland pipewire-audio flatpak build-essential curl fuzzel lynx zsh neovim sway swaylock tree htop fonts-ibm-plex wayvnc wtype wl-clipboard grimshot zip -y;
 
 # Install brave-browser
 curl -fsS https://dl.brave.com/install.sh | sh
