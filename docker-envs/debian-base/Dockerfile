@@ -14,7 +14,7 @@ EOF
 
 # synaptic depends
 RUN apt-get update -y;\
-	apt-get wget install brightnessctl ncdu thunar javacc xwayland pipewire-audio flatpak build-essential curl fuzzel git lynx zsh neovim sway tree htop fonts-ibm-plex wayvnc wtype wl-clipboard grimshot zip -y;\
+	apt-get install wget brightnessctl ncdu thunar javacc xwayland pipewire-audio flatpak build-essential curl fuzzel git lynx zsh neovim sway tree htop fonts-ibm-plex wayvnc wtype wl-clipboard grimshot zip -y;\
 	apt-get upgrade -y;
 
 # ohmyzsh
