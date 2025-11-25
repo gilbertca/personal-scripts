@@ -12,7 +12,7 @@ EOF
 
 # synaptic depends
 RUN apt-get update -y;\
-	apt-get tmux install wget brightnessctl ncdu thunar javacc build-essential curl fuzzel git lynx zsh neovim sway tree htop fonts-ibm-plex zip -y;\
+	apt-get install ncdu tmux wget javacc build-essential curl git lynx zsh neovim tree htop zip -y;\
 	apt-get upgrade -y;
 
 # ohmyzsh
@@ -36,16 +36,16 @@ RUN echo "source /root/.cargo/env">>~/.zshrc
 WORKDIR "/root"
 
 # include vnc server and gnome desktop
-FROM base as x-include
-RUN apt-get install gnome xorg tigervnc-standalone-server dbus-x11 -y
+FROM base AS x-include
+RUN apt-get install gnome xorg thunar brightnessctl tigervnc-standalone-server dbus-x11 fonts-ibm-plex -y
 RUN mkdir /root/.vnc
 RUN echo "#!/bin/bash\ngnome-session">/root/.vnc/xstartup
 RUN chmod +x /root/.vnc/xstartup
 
 # without x
-FROM base as final
+FROM base AS final
 CMD ["/bin/zsh"]
 
 # with x
-FROM x-include as final-x
+FROM x-include AS final-x
 CMD ["/bin/zsh"]
