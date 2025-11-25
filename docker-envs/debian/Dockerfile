@@ -35,12 +35,15 @@ RUN echo "source /root/miniconda3/bin/activate">>~/.zshrc
 RUN echo "source /root/.cargo/env">>~/.zshrc
 WORKDIR "/root"
 
-# include vnc server and gnome desktop
+# include vnc server and xfce4 desktop
 FROM base AS x-include
-RUN apt-get install gnome xorg thunar brightnessctl tigervnc-standalone-server dbus-x11 fonts-ibm-plex -y
+RUN apt-get install xfce4 xorg thunar brightnessctl tigervnc-standalone-server dbus-x11 fonts-ibm-plex -y
+# config vnc
 RUN mkdir -p /root/.config/tigervnc
-RUN echo "#!/bin/bash\ngnome-session">/root/.config/tigervnc/xstartup
+RUN echo "#!/bin/bash\nstartxfce4">/root/.config/tigervnc/xstartup
 RUN chmod +x /root/.config/tigervnc/xstartup
+# install brave
+RUN curl -fsS https://dl.brave.com/install.sh | sh
 
 # without x
 FROM base AS final
