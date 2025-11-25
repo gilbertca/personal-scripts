@@ -38,9 +38,9 @@ WORKDIR "/root"
 # include vnc server and gnome desktop
 FROM base AS x-include
 RUN apt-get install gnome xorg thunar brightnessctl tigervnc-standalone-server dbus-x11 fonts-ibm-plex -y
-RUN mkdir /root/.vnc
-RUN echo "#!/bin/bash\ngnome-session">/root/.vnc/xstartup
-RUN chmod +x /root/.vnc/xstartup
+RUN mkdir -p /root/.config/tigervnc
+RUN echo "#!/bin/bash\ngnome-session">/root/.config/tigervnc/xstartup
+RUN chmod +x /root/.config/tigervnc/xstartup
 
 # without x
 FROM base AS final
