@@ -53,6 +53,8 @@ mkdir -p $SCDIR
 SSDIR=$HOME/screenshots
 mkdir -p $SSDIR
 
+# TODO: SETUP ZRAM
+
 # Install OhMyZSH last, since it will start Sway:
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "";
 

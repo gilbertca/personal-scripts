@@ -12,7 +12,7 @@ EOF
 
 # synaptic depends
 RUN apt-get update -y;\
-	apt-get install wget brightnessctl ncdu thunar javacc build-essential curl fuzzel git lynx zsh neovim sway tree htop fonts-ibm-plex zip -y;\
+	apt-get tmux install wget brightnessctl ncdu thunar javacc build-essential curl fuzzel git lynx zsh neovim sway tree htop fonts-ibm-plex zip -y;\
 	apt-get upgrade -y;
 
 # ohmyzsh
