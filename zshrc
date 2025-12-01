@@ -145,9 +145,6 @@ function ca { # change into directory, list all contents
 function rib { # run in background and close terminal after 5 sec
 	nohup $1>/dev/null 2>&1 &! sleep 5 && exit;
 }
-function ss { # screenshot
-	grimshot save area $HOME/screenshots/$(date -Iseconds).$1.png
-}
 # Auto connect to the provided hostname over tailscale
 # (assumes tailscale name, and machine name are the same)
 function tails {

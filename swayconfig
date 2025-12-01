@@ -233,6 +233,6 @@ client.focused #FF00FF #FF00FF #000000 #FF00FF
 include /etc/sway/config.d/*
 
 # Print, and AI print
-bindsym Print exec $GRIM_DEFAULT_DIR/screenshot.sh
-bindsym $mod+Print exec $GRIM_DEFAULT_DIR/ai.sh
+bindsym Print exec $SCDIR/screenshot.sh
+bindsym $mod+Print exec $SCDIR/ai.sh
 
