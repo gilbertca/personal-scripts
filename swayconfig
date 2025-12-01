@@ -211,13 +211,22 @@ bar {
     }
 }
 
+# volume
 bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
 bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
+# brightness
+bindsym XF86MonBrightnessDown exec brightnessctl set 8%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +8%
 bindsym $mod+F11 exec brightnessctl set 4%-
 bindsym $mod+F12 exec brightnessctl set +4%
 
+# lock
+bindsym XF86Sleep exec "swaylock -c 010101"
+bindsym $mod+Delete exec "swaylock -c 010101"
+
+# magenta border around active window
 default_border pixel 1
 client.focused #FF00FF #FF00FF #000000 #FF00FF
 
