@@ -30,6 +30,9 @@ RUN chmod +x ./cargo.sh;
 RUN ./cargo.sh -y;
 RUN rm ./cargo.sh;
 
+# ollama
+RUN curl -fsSL https://ollama.com/install.sh | sh
+
 # sourcing
 RUN echo "source /root/miniconda3/bin/activate">>~/.zshrc
 RUN echo "source /root/.cargo/env">>~/.zshrc
@@ -44,10 +47,6 @@ RUN echo "#!/bin/bash\nstartxfce4">/root/.config/tigervnc/xstartup
 RUN chmod +x /root/.config/tigervnc/xstartup
 # install brave
 RUN curl -fsS https://dl.brave.com/install.sh | sh
-
-# ollama
-RUN curl -fsSL https://ollama.com/install.sh | sh
-RUN ollama serve >/dev/null 2>&1 &
 
 # without x
 FROM base AS final
