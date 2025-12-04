@@ -45,6 +45,10 @@ RUN chmod +x /root/.config/tigervnc/xstartup
 # install brave
 RUN curl -fsS https://dl.brave.com/install.sh | sh
 
+# ollama
+RUN curl -fsSL https://ollama.com/install.sh | sh
+RUN ollama serve >/dev/null 2>&1 &
+
 # without x
 FROM base AS final
 CMD ["/bin/zsh"]
