@@ -117,9 +117,12 @@ nnoremap <C-l> :tabn<CR>
 nnoremap <C-h> :tabp<CR>
 
 "Hide highlight:
-nnoremap <localleader>/ :noh<CR>
+nnoremap <localleader>/ /\c
+nnoremap <localleader>? :noh<CR>
 "Brace handling:
 ""Blocks:
 inoremap {}} {<cr>a<cr>}<esc>kA<bs>
 ""Move cursor inside braces after typing
 inoremap {}h {}<esc>ci{
+
+set number
