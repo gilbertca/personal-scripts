@@ -102,13 +102,19 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias wlc="wl-copy"
 alias vim="nvim"
+alias denv="docker run -it --mount type=bind,src=/home/scram/docker-persist,dst=/persist debian-base"
+alias lock="swaylock -c 010101"
 
 # Environment variables:
 export EDITOR=nvim
 export GRIM_DEFAULT_DIR=$HOME/screenshots
 export SSDIR=$GRIM_DEFAULT_DIR
 export SCDIR=$HOME/scripts
+export HEADF_MAC=
+export LAT=
+export LON=-
 
 # Launch sway:
 if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
@@ -130,7 +136,9 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # Custom functions
-# redacted
+function spkr {
+	bluetoothctl connect $HEADF_MAC
+}
 function cop { # copy file contents
 	cat $1|wl-copy -n
 }
@@ -145,11 +153,14 @@ function ca { # change into directory, list all contents
 function rib { # run in background and close terminal after 5 sec
 	nohup $1>/dev/null 2>&1 &! sleep 5 && exit;
 }
+function sunset { # blue-light filter
+	wlsunset -l$LAT -L$LON -t3200
+}
 # Auto connect to the provided hostname over tailscale
 # (assumes tailscale name, and machine name are the same)
 function tails {
 	hostname=$1
 	ssh $hostname@$(sudo tailscale status|awk /$hostname/' { print $1 }')
 }
-# redacted
-# Conversion to Neovim:
+# Start Docker environment:
+
