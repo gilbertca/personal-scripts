@@ -25,7 +25,8 @@ include /etc/sway/config-vars.d/*
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * resolution 1920x1080 position 0 0 background #101010 solid_color
+output  resolution 1920x1080 position 0 0 background #101010 solid_color
+#output  resolution 1920x1080@74.973Hz position 0 0 background #101010 solid_color
 #
 # Example configuration:
 #
@@ -55,6 +56,11 @@ input "" {
 	dwt disabled
 	tap enabled
 	drag disabled
+}
+input "*" {
+	repeat_delay 250
+	repeat_rate 40
+
 }
 #   input "2:14:SynPS/2_Synaptics_TouchPad" {
 #       dwt enabled
@@ -224,6 +230,7 @@ bindsym $mod+F12 exec brightnessctl set +4%
 
 # lock
 bindsym XF86Sleep exec "swaylock -c 010101"
+bindsym $mod+Escape exec "swaylock -c 010101"
 bindsym $mod+Delete exec "swaylock -c 010101"
 
 # magenta border around active window
@@ -236,3 +243,6 @@ include /etc/sway/config.d/*
 bindsym Print exec $SCDIR/screenshot.sh
 bindsym $mod+Print exec $SCDIR/ai.sh
 
+# Opacity
+bindsym $mod+minus opacity minus 0.05
+bindsym $mod+plus opacity plus 0.05
