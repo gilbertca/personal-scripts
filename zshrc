@@ -102,19 +102,23 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias wlc="wl-copy"
 alias vim="nvim"
-alias denv="docker run -it --mount type=bind,src=/home/scram/docker-persist,dst=/persist debian-base"
+alias denv="docker run -it --mount type=bind,src=/home/scram/docker-persist,dst=/root/persist debian-env:base "
 alias lock="swaylock -c 010101"
+alias devel="docker run -it --mount type=bind,src=$HOME/da/box/sub3,dst=/root/persist dev-env"
 
 # Environment variables:
-export EDITOR=nvim
-export GRIM_DEFAULT_DIR=$HOME/screenshots
-export SSDIR=$GRIM_DEFAULT_DIR
-export SCDIR=$HOME/scripts
+export EDITOR=
+export GRIM_DEFAULT_DIR=
+export SSDIR=
+export SCDIR=
 export HEADF_MAC=
 export LAT=
-export LON=-
+export LON=
+export NETSSID1=
+export NETPSK1=
+export NETSSID2=
+export NETPSK2=
 
 # Launch sway:
 if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
@@ -142,6 +146,9 @@ function spkr {
 function cop { # copy file contents
 	cat $1|wl-copy -n
 }
+function wl { # copy argument contents
+	printf '%s\n' "$@" | wl-copy   
+}
 function c { # change into directory, list visible contents
 	cd $1
 	ll
@@ -153,8 +160,19 @@ function ca { # change into directory, list all contents
 function rib { # run in background and close terminal after 5 sec
 	nohup $1>/dev/null 2>&1 &! sleep 5 && exit;
 }
+function kava { # connect to wifi
+	netnum="$(sudo wpa_cli add_network|tail -n1)"
+	sudo wpa_cli set_network $netnum ssid \"$NETSSID1\"
+	sudo wpa_cli set_network $netnum psk \"$NETPSK1\"
+	sudo wpa_cli select_network $netnum
+}
+function library { # connect to wifi
+	netnum="$(sudo wpa_cli add_network|tail -n1)"
+	sudo wpa_cli set_network $netnum ssid \"$NETSSID2\"
+	sudo wpa_cli set_network $netnum key_mgmt "$NETPSK2"
+	sudo wpa_cli select_network $netnum }
 function sunset { # blue-light filter
-	wlsunset -l$LAT -L$LON -t3200
+	wlsunset -l$LAT -L$LON -t3800
 }
 # Auto connect to the provided hostname over tailscale
 # (assumes tailscale name, and machine name are the same)
