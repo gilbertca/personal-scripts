@@ -42,7 +42,8 @@ augroup python_group{{{
 augroup END
 "}}}
 augroup rust_group{{{
-autocmd FileType rust set number
+autocmd FileType rust set number|
+\set colorcolumn=80|
 augroup END
 "}}}
 augroup vim_group{{{
@@ -97,14 +98,14 @@ nnoremap <localleader>f za
 "}}}}}}
 
 "VISUAL MODE MAPPINGS:{{{
-" (yy) Yank-Yank copies to Clipboard:
-vnoremap yy "+y
-" ( y) Move to end of line, yank to clipboard with no trailing newline
-vnoremap <localleader>y $h"+y
 "}}}}}}
 
 "To prevent auto-indent while pasting:
 set pastetoggle=<F1>
+
+"Yank to clip-board
+vnoremap <localleader>y $h"+y
+nnoremap <localleader>y myv$h"+y`y
 
 "Splits/Explore:
 nnoremap <localleader>O :Vex<cr>
