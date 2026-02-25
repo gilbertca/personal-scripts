@@ -78,6 +78,7 @@ input "*" {
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+    for_window [app_id=$term] floating enable
 
     # Kill focused window
     bindsym $mod+Shift+p kill
